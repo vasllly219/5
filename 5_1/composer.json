@@ -1,0 +1,11 @@
+{
+    "name": "vasllly/geo",
+    "description": "Homework 5.1",
+    "authors": [
+        {
+            "name": "Vasiliy Ganja",
+            "email": "ganja@foxford.ru"
+        }
+    ],
+    "require": {"yandex/geo": "~1.1.2"}
+}
