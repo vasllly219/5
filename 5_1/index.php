@@ -7,7 +7,7 @@ $api = new \Yandex\Geo\Api();
 $api->setQuery($adress);
 // Настройка фильтров
 $api
-    ->setLimit(1) // кол-во результатов
+    ->setLimit(10) // кол-во результатов
     ->setLang(\Yandex\Geo\Api::LANG_US) // локаль ответа
     ->load();
 $response = $api->getResponse();
@@ -30,7 +30,7 @@ $flug = is_int($get) && $get < count($data) && $get >= 0;
         var moscow_map;
         ymaps.ready(function(){
             moscow_map = new ymaps.Map("map", {
-                center: [<?= $data[0]['Latitude'] . ', ' .  $data[0]['Longitude'] ?>],
+                center: [<?= $data[$get]['Latitude'] . ', ' .  $data[$get]['Longitude'] ?>],
                 zoom: 15
             });
         });
@@ -64,11 +64,11 @@ $flug = is_int($get) && $get < count($data) && $get >= 0;
     <tr>
         <th><?= $adress ?></th>
     </tr>
+    <?php foreach ($data as $id => $item): ?>
     <tr>
-        <?php foreach ($data as $id => $item): ?>
         <td><a href='?adress=<?= $adress ?>&id=<?= $id ?>'><?= $item['Latitude'] . ', ' .  $item['Longitude'] ?></a></td>
-        <?php endforeach ?>
     </tr>
+    <?php endforeach ?>
     </table>
     <?php endif ?>
     <?php if ($flug): ?>
